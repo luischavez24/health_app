@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:helth_exercises_app/api/health_api.dart';
-import 'package:helth_exercises_app/widgets/exercise_card.dart';
+import 'package:helth_exercises_app/widgets/benefit_card.dart';
 
-class ExerciseView extends StatefulWidget {
+class BenefitView extends StatefulWidget {
   @override
-  State createState() => ExerciseViewState();
+  State createState() => BenefitViewState();
 }
 
-class ExerciseViewState extends State<ExerciseView> {
+class BenefitViewState extends State<BenefitView> {
   final HealthApi _healthApi = HealthApi();
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _healthApi.fetchExercises(0, 20),
+      future: _healthApi.fetchBenefits(0, 20),
       builder: (context, snapshot) {
         if(snapshot.hasData) {
           if(snapshot.data != null) {
-            final exercises = snapshot.data;
+            final benefits = snapshot.data;
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
               child: ListView.builder(
-                  itemCount: exercises.length,
-                  itemBuilder: (context, index) => ExerciseCard(exercises[index])
+                  itemCount: benefits.length,
+                  itemBuilder: (context, index) => BenefitsCard(benefits[index])
               ),
             );
           }

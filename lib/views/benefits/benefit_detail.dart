@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
-import 'package:helth_exercises_app/models/exercise.dart';
+import 'package:helth_exercises_app/models/benefit.dart';
 
-class ExerciseDetailPage extends StatelessWidget {
-  final Exercise exercise;
+class BenefitDetailPage extends StatelessWidget {
+  final Benefit benefit;
 
-  ExerciseDetailPage({Key key, this.exercise}) : super(key: key);
+  BenefitDetailPage({Key key, this.benefit}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,30 +14,34 @@ class ExerciseDetailPage extends StatelessWidget {
       child: Container(
         child: LinearProgressIndicator(
             backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
-            value: exercise.points / 10,
+            value: benefit.points / 10,
             valueColor: AlwaysStoppedAnimation(Colors.green)),
       ),
     );
 
-    final pointsPerExercises = Container(
-      padding: const EdgeInsets.all(1.0),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.circular(5.0)),
-      child: Center(
-        child: Text(
-          this.exercise.shortProfit,
-          style: TextStyle(color: Colors.white),
+    final pointsNeeded = Container(
+        padding: const EdgeInsets.all(8.0),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.green),
+            borderRadius: BorderRadius.circular(5.0),
         ),
-      )
+        child: Center(
+          child: Text(
+            "${this.benefit.points} puntos",
+            style: TextStyle(
+                color: Colors.green,
+                fontSize: 17.0
+            ),
+          ),
+        )
     );
 
     final topContentText = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        SizedBox(height: 60.0),
+        SizedBox(height: 30.0),
         Icon(
-          Icons.directions_run,
+          LineIcons.gift,
           color: Colors.white,
           size: 40.0,
         ),
@@ -45,27 +49,16 @@ class ExerciseDetailPage extends StatelessWidget {
           width: 90.0,
           child: Divider(color: Colors.green),
         ),
-        SizedBox(height: 15.0),
+        SizedBox(height: 11.0),
         Text(
-          exercise.name,
-          style: TextStyle(color: Colors.white, fontSize: 45.0),
+          benefit.name,
+          style: TextStyle(color: Colors.white, fontSize: 40.0),
         ),
-        SizedBox(height: 15.0),
+        SizedBox(height: 20.0),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Expanded(flex: 1, child: levelIndicator),
-            Expanded(
-                flex: 2,
-                child: Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      exercise.level,
-                      style: TextStyle(color: Colors.white),
-                    )
-                )
-            ),
-            Expanded(flex: 3, child: pointsPerExercises)
+            Expanded(flex: 3, child: pointsNeeded)
           ],
         ),
       ],
@@ -78,7 +71,7 @@ class ExerciseDetailPage extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.5,
             decoration: new BoxDecoration(
               image: new DecorationImage(
-                image: NetworkImage(this.exercise.imageUrl),
+                image: NetworkImage(this.benefit.imageUrl),
                 fit: BoxFit.cover,
               ),
             )),
@@ -105,7 +98,7 @@ class ExerciseDetailPage extends StatelessWidget {
     );
 
     final bottomContentText = Text(
-      exercise.description,
+      benefit.description,
       style: TextStyle(fontSize: 18.0),
     );
 
@@ -115,7 +108,7 @@ class ExerciseDetailPage extends StatelessWidget {
         child: RaisedButton(
           onPressed: () => {},
           color: Color.fromRGBO(58, 66, 86, 1.0),
-          child: Text("EMPEZAR", style: TextStyle(color: Colors.white)),
+          child: Text("CANJEAR PROMOCIÓN", style: TextStyle(color: Colors.white)),
           shape: SuperellipseShape(
             borderRadius: BorderRadius.circular(10),
           ),

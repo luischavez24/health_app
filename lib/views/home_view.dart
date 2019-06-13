@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:helth_exercises_app/notifiers/view_changer.dart';
 import 'package:helth_exercises_app/views/exercises/exercise_view.dart';
-import 'package:helth_exercises_app/views/benefits/benefits_view.dart';
+import 'package:helth_exercises_app/views/benefits/benefit_view.dart';
 import 'package:helth_exercises_app/views/profile/profile_view.dart';
 import 'package:provider/provider.dart';
+import 'package:line_icons/line_icons.dart';
 
 class HomeView extends StatelessWidget {
   final List views = [
     {
       "view": BenefitView(),
       "bottomNav": BottomNavigationBarItem(
-          icon: Icon(Icons.card_giftcard),
+          icon: Icon(LineIcons.gift),
           title: Text("Beneficios")
       ),
     },
@@ -24,7 +25,7 @@ class HomeView extends StatelessWidget {
     {
       "view": ProfileView(),
       "bottomNav": BottomNavigationBarItem(
-          icon: Icon(Icons.person),
+          icon: Icon(LineIcons.user),
           title: Text("Perfil")
       ),
     },
@@ -34,26 +35,34 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewChanger = Provider.of<ViewChanger>(context);
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       appBar: buildAppBar("Health Prix"),
       body: Container(
           child: views[viewChanger.viewIndex]["view"]
       ),
-      bottomNavigationBar: buildBottom(viewChanger)
+      bottomNavigationBar: buildBottom(viewChanger),
     );
   }
 
   Widget buildAppBar(String title) {
     return AppBar(
-      elevation: 0.1,
+      elevation: 5.0,
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-      title: Text(title),
+      title: Row(
+        children: <Widget>[
+          Icon(LineIcons.heartbeat),
+          SizedBox(width: 5.0),
+          Text(title)
+        ],
+      ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(Icons.list),
+          icon: Icon(LineIcons.search),
           onPressed: () {},
         )
       ],
+
     );
   }
 
