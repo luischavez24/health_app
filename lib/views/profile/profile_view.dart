@@ -50,24 +50,28 @@ class ProfileViewState extends State<ProfileView> {
     var axis = charts.NumericAxisSpec(
         renderSpec: charts.GridlineRendererSpec(
             labelStyle: charts.TextStyleSpec(
-                fontSize: 10, color: charts.MaterialPalette.white),
+                fontSize: 10,
+                color: charts.MaterialPalette.white
+            ),
             lineStyle: charts.LineStyleSpec(
                 thickness: 0,
-                color: charts.MaterialPalette.gray.shadeDefault)));
+                color: charts.MaterialPalette.white
+            )
+        )
+    );
 
     var chartWidget = Padding(
       padding: EdgeInsets.all(32.0),
       child: Column(
         children: <Widget>[
-          Text(
-            "Avance de puntos por mes",
+          Text("Avance de puntos por mes",
             style: TextStyle(
               color: Colors.white,
               fontSize: 18.0
             ),
           ),
           SizedBox(
-            height: 150.0,
+            height: 180.0,
             child: charts.LineChart(
               series,
               animate: true,
@@ -98,7 +102,7 @@ class ProfileViewState extends State<ProfileView> {
                         image: NetworkImage(userProfile.profileImageUrl)
                     ),
                     boxShadow: [
-                      BoxShadow(color: Colors.black, blurRadius: 3.0, spreadRadius: 1.0)
+                      BoxShadow(color: Colors.black12, blurRadius: 1.0, spreadRadius: 1.0)
                     ]
                 ),
             ),
@@ -112,7 +116,16 @@ class ProfileViewState extends State<ProfileView> {
               fontWeight: FontWeight.w800
             ),
           ),
-          SizedBox(height: 20.0),
+          SizedBox(height: 10.0),
+          Text(
+            userProfile.email,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 15.0,
+                fontWeight: FontWeight.bold
+            ),
+          ),
+          SizedBox(height: 10.0),
           Text(
             'Tienes ${userProfile.points} puntos',
             style: TextStyle(

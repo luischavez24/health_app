@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icons.dart';
 import 'package:superellipse_shape/superellipse_shape.dart';
 import 'package:helth_exercises_app/models/exercise.dart';
 
@@ -13,17 +12,17 @@ class ExerciseDetailPage extends StatelessWidget {
     final levelIndicator = Container(
       child: Container(
         child: LinearProgressIndicator(
-            backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
-            value: exercise.points / 10,
-            valueColor: AlwaysStoppedAnimation(Colors.green)),
+          backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
+          value: exercise.points / 10,
+          valueColor: AlwaysStoppedAnimation(Colors.green)),
       ),
     );
 
     final pointsPerExercises = Container(
       padding: const EdgeInsets.all(1.0),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.white),
-          borderRadius: BorderRadius.circular(5.0)),
+        border: Border.all(color: Colors.white),
+        borderRadius: BorderRadius.circular(5.0)),
       child: Center(
         child: Text(
           this.exercise.shortProfit,
@@ -56,14 +55,14 @@ class ExerciseDetailPage extends StatelessWidget {
           children: <Widget>[
             Expanded(flex: 1, child: levelIndicator),
             Expanded(
-                flex: 2,
-                child: Padding(
-                    padding: EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      exercise.level,
-                      style: TextStyle(color: Colors.white),
-                    )
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.only(left: 10.0),
+                child: Text(
+                  exercise.level,
+                  style: TextStyle(color: Colors.white),
                 )
+              )
             ),
             Expanded(flex: 3, child: pointsPerExercises)
           ],

@@ -10,27 +10,18 @@ class BenefitDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final levelIndicator = Container(
-      child: Container(
-        child: LinearProgressIndicator(
-            backgroundColor: Color.fromRGBO(209, 224, 224, 0.2),
-            value: benefit.points / 10,
-            valueColor: AlwaysStoppedAnimation(Colors.green)),
-      ),
-    );
-
     final pointsNeeded = Container(
         padding: const EdgeInsets.all(8.0),
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.green),
-            borderRadius: BorderRadius.circular(5.0),
+          border: Border.all(color: Colors.green),
+          borderRadius: BorderRadius.circular(5.0),
         ),
         child: Center(
           child: Text(
             "${this.benefit.points} puntos",
             style: TextStyle(
-                color: Colors.green,
-                fontSize: 17.0
+              color: Colors.green,
+              fontSize: 17.0
             ),
           ),
         )
@@ -67,14 +58,15 @@ class BenefitDetailPage extends StatelessWidget {
     final topContent = Stack(
       children: <Widget>[
         Container(
-            padding: EdgeInsets.only(left: 10.0),
-            height: MediaQuery.of(context).size.height * 0.5,
-            decoration: new BoxDecoration(
-              image: new DecorationImage(
-                image: NetworkImage(this.benefit.imageUrl),
-                fit: BoxFit.cover,
-              ),
-            )),
+          padding: EdgeInsets.only(left: 10.0),
+          height: MediaQuery.of(context).size.height * 0.5,
+          decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: NetworkImage(this.benefit.imageUrl),
+              fit: BoxFit.cover,
+            ),
+          )
+        ),
         Container(
           height: MediaQuery.of(context).size.height * 0.5,
           padding: EdgeInsets.all(40.0),
@@ -103,17 +95,18 @@ class BenefitDetailPage extends StatelessWidget {
     );
 
     final readButton = Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0),
-        width: MediaQuery.of(context).size.width,
-        child: RaisedButton(
-          onPressed: () => {},
-          color: Color.fromRGBO(58, 66, 86, 1.0),
-          child: Text("CANJEAR PROMOCIÓN", style: TextStyle(color: Colors.white)),
-          shape: SuperellipseShape(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-        ));
+      padding: EdgeInsets.symmetric(vertical: 20.0),
+      width: MediaQuery.of(context).size.width,
+      child: RaisedButton(
+        onPressed: () => {},
+        color: Color.fromRGBO(58, 66, 86, 1.0),
+        child: Text("CANJEAR PROMOCIÓN", style: TextStyle(color: Colors.white)),
+        shape: SuperellipseShape(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+      )
+    );
     final bottomContent = Container(
       // height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:helth_exercises_app/api/health_api.dart';
+import 'package:helth_exercises_app/widgets/common.dart';
 import 'package:helth_exercises_app/widgets/exercise_card.dart';
 
 class ExerciseView extends StatefulWidget {
@@ -20,15 +21,13 @@ class ExerciseViewState extends State<ExerciseView> {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
               child: ListView.builder(
-                  itemCount: exercises.length,
-                  itemBuilder: (context, index) => ExerciseCard(exercises[index])
+                itemCount: exercises.length,
+                itemBuilder: (context, index) => ExerciseCard(exercises[index])
               ),
             );
           }
         } else if(snapshot.hasError) {
-          return Center(
-            child: Text(snapshot.error.toString()),
-          );
+          return ErrorDisplay(errorDetail: snapshot.error.toString());
         } else {
           return Center(
             child: CircularProgressIndicator(),

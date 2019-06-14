@@ -11,22 +11,22 @@ class HomeView extends StatelessWidget {
     {
       "view": BenefitView(),
       "bottomNav": BottomNavigationBarItem(
-          icon: Icon(LineIcons.gift),
-          title: Text("Beneficios")
+        icon: Icon(LineIcons.gift),
+        title: Text("Beneficios")
       ),
     },
     {
       "view": ExerciseView(),
       "bottomNav": BottomNavigationBarItem(
-          icon: Icon(Icons.directions_run),
-          title: Text("Ejercicios")
+        icon: Icon(Icons.directions_run),
+        title: Text("Ejercicios")
       ),
     },
     {
       "view": ProfileView(),
       "bottomNav": BottomNavigationBarItem(
-          icon: Icon(LineIcons.user),
-          title: Text("Perfil")
+        icon: Icon(LineIcons.user),
+        title: Text("Perfil")
       ),
     },
   ];
@@ -39,7 +39,7 @@ class HomeView extends StatelessWidget {
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       appBar: buildAppBar("Health Prix"),
       body: Container(
-          child: views[viewChanger.viewIndex]["view"]
+        child: views[viewChanger.viewIndex]["view"]
       ),
       bottomNavigationBar: buildBottom(viewChanger),
     );

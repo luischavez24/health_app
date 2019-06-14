@@ -34,8 +34,7 @@ class ExerciseCardState extends State<ExerciseCard> {
                 padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
                 child: Column(
                   children: <Widget>[
-                    Text(
-                      this.exercise.name,
+                    Text(this.exercise.name,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30.0,
@@ -44,8 +43,7 @@ class ExerciseCardState extends State<ExerciseCard> {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 5.0),
-                    Text(
-                      this.exercise.level,
+                    Text(this.exercise.level,
                       style: TextStyle(
                         color: Colors.deepOrange,
                         fontSize: 20.0,
@@ -53,8 +51,7 @@ class ExerciseCardState extends State<ExerciseCard> {
                       ),
                     ),
                     SizedBox(height: 10.0),
-                    Text(
-                      this.exercise.profit,
+                    Text(this.exercise.profit,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
@@ -64,12 +61,13 @@ class ExerciseCardState extends State<ExerciseCard> {
                     buildButton(
                       text: "VER MÁS",
                       onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ExerciseDetailPage(
-                              key: Key(this.exercise.id),
-                              exercise: this.exercise,
-                            )
-                        ));
+                        var materialRoute = MaterialPageRoute(
+                          builder: (context) => ExerciseDetailPage(
+                            key: Key(this.exercise.id),
+                            exercise: this.exercise,
+                          )
+                        );
+                        Navigator.of(context).push(materialRoute);
                       }
                     )
                   ],
@@ -81,28 +79,32 @@ class ExerciseCardState extends State<ExerciseCard> {
         )
     );
 
-    return Column(children: <Widget>[card,  SizedBox(height: 20.0,) ]);
+    return Column(
+      children: <Widget>[
+        card,  SizedBox(height: 20.0,) 
+      ]
+    );
   }
   
   Widget buildButton({ String text, Function onPressed }) {
     return Container(
-        padding: EdgeInsets.symmetric(vertical: 8.0),
-        width: MediaQuery.of(context).size.width / 2,
-        child: RaisedButton(
-          onPressed: onPressed,
-          color: Color.fromRGBO(58, 66, 86, 1.0),
-          child: Text(text,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15.0,
-              fontWeight: FontWeight.w700
-            )
-          ),
-          shape: SuperellipseShape(
-              borderRadius: BorderRadius.circular(10),
-          ),
-          padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
-        )
+      padding: EdgeInsets.symmetric(vertical: 8.0),
+      width: MediaQuery.of(context).size.width / 2,
+      child: RaisedButton(
+        onPressed: onPressed,
+        color: Color.fromRGBO(58, 66, 86, 1.0),
+        child: Text(text,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 15.0,
+            fontWeight: FontWeight.w700
+          )
+        ),
+        shape: SuperellipseShape(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+      )
     );
   }
 }
