@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1035229254065",
+    "firebase_url": "https://health-fc720.firebaseio.com",
+    "project_id": "health-fc720",
+    "storage_bucket": "health-fc720.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035229254065:android:1243dfa65d1abd9f",
+        "android_client_info": {
+          "package_name": "com.jglconsulting.health_exercise_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035229254065-1i51aaflu9td5l51fnjcauhdhkvaucfr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jglconsulting.health_exercise_app",
+            "certificate_hash": "cedc8894ca917f1b4a41d49fe64bfbf3c5afae58"
+          }
+        },
+        {
+          "client_id": "1035229254065-qghn8s3gfgu3ko3rms9qggmib6dt18ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6uMLBIKn9916W8dxT91mGaAhtkHay0Ww"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035229254065-qghn8s3gfgu3ko3rms9qggmib6dt18ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

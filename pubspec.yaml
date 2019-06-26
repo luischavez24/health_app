@@ -28,6 +28,11 @@ dependencies:
   superellipse_shape: ^0.1.5
   line_icons: ^0.2.0
   charts_flutter: ^0.6.0
+  firebase_core: ^0.2.5
+  firebase_analytics: ^1.0.4
+  cloud_firestore: 0.8.2+3
+  firebase_auth: 0.6.6
+  google_sign_in: ^3.2.4
 
 dev_dependencies:
   flutter_test:

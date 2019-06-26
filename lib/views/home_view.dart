@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:helth_exercises_app/notifiers/user_repository.dart';
 import 'package:helth_exercises_app/notifiers/view_changer.dart';
 import 'package:helth_exercises_app/views/exercises/exercise_view.dart';
 import 'package:helth_exercises_app/views/benefits/benefit_view.dart';
@@ -6,8 +8,13 @@ import 'package:helth_exercises_app/views/profile/profile_view.dart';
 import 'package:provider/provider.dart';
 import 'package:line_icons/line_icons.dart';
 
+
 class HomeView extends StatelessWidget {
-  final List views = [
+  FirebaseUser user;
+  String accessToken;
+
+  HomeView({ this.user, this.accessToken  });
+  List get views => [
     {
       "view": BenefitView(),
       "bottomNav": BottomNavigationBarItem(
@@ -23,7 +30,7 @@ class HomeView extends StatelessWidget {
       ),
     },
     {
-      "view": ProfileView(),
+      "view": ProfileView(user: this.user, accessToken: this.accessToken),
       "bottomNav": BottomNavigationBarItem(
         icon: Icon(LineIcons.user),
         title: Text("Perfil")
@@ -34,18 +41,20 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewChanger = Provider.of<ViewChanger>(context);
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
-      appBar: buildAppBar("Health Prix"),
+      appBar: buildAppBar(context, "Health Prix"),
       body: Container(
         child: views[viewChanger.viewIndex]["view"]
       ),
-      bottomNavigationBar: buildBottom(viewChanger),
+      bottomNavigationBar: buildBottom(context, viewChanger),
     );
   }
 
-  Widget buildAppBar(String title) {
+  Widget buildAppBar(BuildContext context, String title) {
+    final user = Provider.of<UserRepository>(context);
     return AppBar(
       elevation: 5.0,
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
@@ -58,15 +67,14 @@ class HomeView extends StatelessWidget {
       ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(LineIcons.search),
-          onPressed: () {},
+          icon: Icon(LineIcons.sign_out),
+          onPressed: user.signOut,
         )
       ],
-
     );
   }
 
-  Widget buildBottom(ViewChanger viewChanger) {
+  Widget buildBottom(BuildContext context, ViewChanger viewChanger) {
     return BottomNavigationBar(
       backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
       unselectedItemColor: Colors.white,

@@ -1,11 +1,20 @@
 class UserProfile {
   String email;
-  String firstName;
-  String lastName;
-  int points;
+  String displayName;
+  double calories;
   String profileImageUrl;
 
-  UserProfile({this.email, this.firstName, this.lastName, this.points, this.profileImageUrl});
+  UserProfile({this.email, this.displayName, this.calories, this.profileImageUrl});
 
-  String get fullName => '$firstName $lastName';
+}
+
+class CaloriesHistory {
+  String day;
+  int dayNumber = 1;
+  int calories;
+  CaloriesHistory({
+    this.day,
+    this.dayNumber,
+    this.calories
+  });
 }
